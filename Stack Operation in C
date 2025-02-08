@@ -1,0 +1,82 @@
+#include<stdio.h>
+int top=-1, stack[10];
+void push(int);
+int pop();
+void display();
+int main()
+{
+    int val;
+    int choice=0;
+    printf("1.Push\t2.Pop\t3.Display\t4.Quit\n");
+    while(choice!=4)
+    {
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+    switch(choice)
+    {
+        case 1:
+        {
+        printf("Enter the value: ");
+        scanf("%d", &val);
+        push(val);
+        break;
+        }
+        case 2:
+        {
+            int p = pop();
+            if(p!=-1)
+            printf("Popped %d from stack\n", p);
+            break;
+        }
+        case 3: 
+        {
+            display();
+            break;
+        }
+        case 4: 
+        {
+            printf("End\n");
+            break;
+        }
+        default:
+        printf("Invalid input\n");
+        break;
+    }
+    printf("\n\n");
+    }
+    return 0;
+}
+
+void push(int num)
+{
+    if(top == 9)
+    {
+        printf("Stack is full!\n");
+        return;
+    }
+    top++;
+    stack[top]=num;
+    printf("Pushed %d to stack\n", num);
+}
+int pop()
+{
+    if(top==-1)
+    {
+        printf("Stack is empty!\n");
+        return -1;
+    }
+    return stack[top--];
+}
+void display()
+{
+    if(top==-1)
+    {
+        printf("Stack is empty\n");
+        return;
+    }
+    for(int i=0;i<=top;i++)
+    {
+        printf("%d\t", stack[i]);
+    }
+    printf("\n");
+}
